@@ -63,7 +63,7 @@ class Movies extends Component {
     const { totalCount, movies } = this.getPagedData();
     return (
       <React.Fragment>
-        <div style={{ marginTop: 50 }} className="row">
+        <div className="row">
           <div className="col-3">
             <ListGroup
               items={this.state.genres}
