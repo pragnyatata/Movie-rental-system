@@ -14,15 +14,7 @@ class LoginForm extends Form {
       .required()
       .label("Password")
   };
-  handleSubmit = e => {
-    e.preventDefault();
-    const errors = this.validate();
-    console.log(errors);
-    this.setState({ errors: errors || {} });
-    if (errors) return;
 
-    this.doSubmit();
-  };
   doSubmit = () => {
     console.log("Submitted");
   };

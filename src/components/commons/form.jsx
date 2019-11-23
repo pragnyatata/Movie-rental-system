@@ -23,6 +23,15 @@ class Form extends Component {
     if (!error) return null;
     return error.details[0].message;
   };
+  handleSubmit = e => {
+    e.preventDefault();
+    const errors = this.validate();
+    console.log(errors);
+    this.setState({ errors: errors || {} });
+    if (errors) return;
+
+    this.doSubmit();
+  };
   handleChange = ({ currentTarget: input }) => {
     const errors = { ...this.state.errors };
     const errorMessage = this.validateProperty(input);
