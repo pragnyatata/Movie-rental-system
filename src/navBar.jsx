@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 class NavBar extends Component {
   render() {
+    console.log(this.props.user);
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link className="navbar-brand" to="/">
@@ -29,12 +30,26 @@ class NavBar extends Component {
             <NavLink className="nav-item nav-link" to="/rentals">
               Rentals
             </NavLink>
-            <NavLink className="nav-item nav-link" to="/login">
-              Login
-            </NavLink>
-            <NavLink className="nav-item nav-link" to="/register">
-              Register
-            </NavLink>
+            {!this.props.user && (
+              <React.Fragment>
+                <NavLink className="nav-item nav-link" to="/login">
+                  Login
+                </NavLink>
+                <NavLink className="nav-item nav-link" to="/register">
+                  Register
+                </NavLink>
+              </React.Fragment>
+            )}
+            {this.props.user && (
+              <React.Fragment>
+                <NavLink className="nav-item nav-link" to="/profile">
+                  {this.props.user.name}
+                </NavLink>
+                <NavLink className="nav-item nav-link" to="/logout">
+                  Logout
+                </NavLink>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </nav>
